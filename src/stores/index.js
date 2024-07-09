@@ -29,6 +29,7 @@ export const useStore = defineStore(`store`, {
     legend: config.legendOption[3].value,
     isMacCodeBlock: true,
     isEditOnLeft: true,
+    language: `zh`,
   }),
   actions: {
     setEditorValue(data) {
@@ -71,6 +72,10 @@ export const useStore = defineStore(`store`, {
     setIsEditOnLeft(data) {
       this.isEditOnLeft = data
       localStorage.setItem(`isEditOnLeft`, data)
+    },
+    setLanguage(data) {
+      this.language = data
+      localStorage.setItem(`language`, data)
     },
     themeChanged() {
       this.nightMode = !this.nightMode

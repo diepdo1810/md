@@ -1,26 +1,26 @@
 export default {
   builtinFonts: [
     {
-      label: `无衬线`,
+      label: `Sans-serif`,
       value: `-apple-system-font,BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB , Microsoft YaHei UI , Microsoft YaHei ,Arial,sans-serif`,
-      desc: `字体123Abc`,
+      desc: `Font 123Abc`,
     },
     {
-      label: `衬线`,
+      label: `Serif`,
       value: `Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif`,
-      desc: `字体123Abc`,
+      desc: `Font 123Abc`,
     },
     {
-      label: `等宽`,
+      label: `Monospace`,
       value: `Menlo, Monaco, 'Courier New', monospace`,
-      desc: `字体123Abc`,
+      desc: `Font 123Abc`,
     },
   ],
   sizeOption: [
     {
       label: `12px`,
       value: `12px`,
-      desc: `更小`,
+      desc: `较小`,
     },
     {
       label: `13px`,
@@ -45,17 +45,17 @@ export default {
   ],
   colorOption: [
     {
-      label: `经典蓝`,
+      label: `Classic blue`,
       value: `rgba(15, 76, 129, 1)`,
       desc: `最新流行`,
     },
     {
-      label: `翡翠绿`,
+      label: `Elegant green`,
       value: `rgba(0, 152, 116, 1)`,
       desc: `优雅清新`,
     },
     {
-      label: `活力橘`,
+      label: `Passionate red`,
       value: `rgba(250, 81, 81, 1)`,
       desc: `热情活泼`,
     },
@@ -90,27 +90,27 @@ export default {
   ],
   legendOption: [
     {
-      label: `title 优先`,
+      label: `title priority`,
       value: `title-alt`,
       desc: ``,
     },
     {
-      label: `alt 优先`,
+      label: `alt priority`,
       value: `alt-title`,
       desc: ``,
     },
     {
-      label: `只显示 title`,
+      label: `Show only title`,
       value: `title`,
       desc: ``,
     },
     {
-      label: `只显示 alt`,
+      label: `Show only alt`,
       value: `alt`,
       desc: ``,
     },
     {
-      label: `不显示`,
+      label: `Do not show`,
       value: `none`,
       desc: ``,
     },

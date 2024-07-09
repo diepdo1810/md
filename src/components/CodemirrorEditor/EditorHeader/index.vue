@@ -19,6 +19,7 @@ export default {
     ResetDialog,
   },
   emits: [`refresh`, `startCopy`, `endCopy`, `showCssEditor`, `cssChanged`, `importMd`, `download`, `export`, `showDialogUploadImg`, `showDialogForm`, `showAboutDialog`],
+
   data() {
     return {
       config,
@@ -250,7 +251,7 @@ export default {
         // 输出提示
         this.$notify({
           showClose: true,
-          message: `已复制渲染后的文章到剪贴板，可直接到公众号后台粘贴`,
+          message: `${this.$t(`translate.已复制渲染后的文章到剪贴板可直接到公众号后台粘贴`)}！`,
           offset: 80,
           duration: 1600,
           type: `success`,
@@ -275,6 +276,14 @@ export default {
       if (!flag) {
         this.setCssEditorValue(DEFAULT_CSS_CONTENT)
       }
+    },
+    translateFormatItems() {
+      return this.formatItems.map((item) => {
+        return {
+          ...item,
+          label: this.$t(`translate.${item.label}`),
+        }
+      })
     },
     // 重置样式
     confirmReset() {
@@ -323,46 +332,46 @@ export default {
     <div class="dropdowns">
       <el-dropdown>
         <span class="el-dropdown-link">
-          文件<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
+          {{ $t('translate.文件') }}<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item class="leading-8" @click="refClick">
               <el-icon><ElIconUpload /></el-icon>
-              导入 .md
+              {{ $t('translate.导入') }} .md
               <input ref="fileInput" hidden type="file" accept=".md">
             </el-dropdown-item>
             <el-dropdown-item class="leading-8" @click="$emit('download')">
               <el-icon><ElIconDownload /></el-icon>
-              导出 .md
+              {{ $t('translate.导出') }} .md
             </el-dropdown-item>
             <el-dropdown-item class="leading-8" @click="$emit('export')">
               <el-icon><ElIconDocument /></el-icon>
-              导出 .html
+              {{ $t('translate.导出') }} .html
             </el-dropdown-item>
             <el-dropdown-item divided class="leading-8" @click="themeChanged">
               <el-icon :style="{ opacity: +nightMode }">
                 <ElIconCheck />
               </el-icon>
-              暗黑模式
+              {{ $t('translate.暗黑模式') }}
             </el-dropdown-item>
             <el-dropdown-item divided class="leading-8" @click="isEditOnLeftChanged">
               <el-icon :style="{ opacity: +isEditOnLeft }">
                 <ElIconCheck />
               </el-icon>
-              左侧编辑
+              {{ $t('translate.左侧编辑') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
       <el-dropdown>
         <span class="el-dropdown-link">
-          格式<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
+          {{ $t('translate.格式') }}<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="format-list">
             <el-dropdown-item
-              v-for="{ label, kbd, emitArgs } in formatItems"
+              v-for="{ label, kbd, emitArgs } in translateFormatItems()"
               :key="kbd"
               class="leading-8 format-item"
               @click="$emit(...emitArgs)"
@@ -375,14 +384,14 @@ export default {
             </el-dropdown-item>
             <el-dropdown-item divided class="leading-8" @click="statusChanged">
               <el-icon><ElIconCheck /></el-icon>
-              微信外链转底部引用
+              {{ $t('translate.微信外链转底部引用') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
       <el-dropdown>
         <span class="el-dropdown-link">
-          编辑<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
+          {{ $t('translate.文件') }}<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
@@ -391,27 +400,27 @@ export default {
               @click="$emit('showDialogUploadImg')"
             >
               <el-icon><ElIconUpload /></el-icon>
-              上传图片
+              {{ $t('translate.上传图片') }}
             </el-dropdown-item>
             <el-dropdown-item
               class="leading-8"
               @click="$emit('showDialogForm')"
             >
               <el-icon><ElIconGrid /></el-icon>
-              插入表格
+              {{ $t('translate.插入表格') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
       <el-dropdown>
         <span class="el-dropdown-link">
-          样式<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
+          {{ $t('translate.样式') }}<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item class="leading-8">
               <StyleOptionMenu
-                label="字体"
+                :label="$t('translate.字体')"
                 :options="config.builtinFonts"
                 :current="selectFont"
                 :charge="fontChanged"
@@ -419,7 +428,7 @@ export default {
             </el-dropdown-item>
             <el-dropdown-item class="leading-8">
               <StyleOptionMenu
-                label="字号"
+                :label="$t('translate.字号')"
                 :options="config.sizeOption"
                 :current="selectSize"
                 :charge="sizeChanged"
@@ -427,7 +436,7 @@ export default {
             </el-dropdown-item>
             <el-dropdown-item class="leading-8">
               <StyleOptionMenu
-                label="颜色"
+                :label="$t('translate.颜色')"
                 :options="config.colorOption"
                 :current="selectColor"
                 :charge="colorChanged"
@@ -435,7 +444,7 @@ export default {
             </el-dropdown-item>
             <el-dropdown-item class="leading-8">
               <StyleOptionMenu
-                label="代码主题"
+                :label="$t('translate.代码主题')"
                 :options="config.codeThemeOption"
                 :current="selectCodeTheme"
                 :charge="codeThemeChanged"
@@ -443,7 +452,7 @@ export default {
             </el-dropdown-item>
             <el-dropdown-item class="leading-8">
               <StyleOptionMenu
-                label="图注格式"
+                :label="$t('translate.图注格式')"
                 :options="config.legendOption"
                 :current="selectLegend"
                 :charge="legendChanged"
@@ -457,7 +466,7 @@ export default {
               <el-icon class="opacity-0">
                 <ElIconCheck />
               </el-icon>
-              自定义颜色
+              {{ $t('translate.自定义颜色') }}
               <el-color-picker
                 ref="colorPicker"
                 v-model="selectColor"
@@ -471,13 +480,13 @@ export default {
               <el-icon class="opacity-0">
                 <ElIconCheck />
               </el-icon>
-              自定义 CSS
+              {{ $t('translate.自定义CSS') }}
             </el-dropdown-item>
             <el-dropdown-item divided class="leading-8" @click="codeBlockChanged">
               <el-icon :style="{ opacity: +isMacCodeBlock }">
                 <ElIconCheck />
               </el-icon>
-              Mac 代码块
+              {{ $t('translate.Mac代码块') }}
             </el-dropdown-item>
             <el-dropdown-item
               divided
@@ -487,14 +496,14 @@ export default {
               <el-icon class="opacity-0">
                 <ElIconCheck />
               </el-icon>
-              重置
+              {{ $t('translate.重置') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
       <el-dropdown>
         <span class="el-dropdown-link">
-          帮助<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
+          {{ $t('translate.帮助') }}<el-icon class="ml-2"><ElIconArrowDown /></el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
@@ -502,17 +511,17 @@ export default {
               class="leading-8"
               @click="$emit('showAboutDialog')"
             >
-              关于
+              {{ $t('translate.关于') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
     </div>
     <el-button plain size="default" :type="btnType" @click="copy">
-      复制
+      {{ $t('translate.复制') }}
     </el-button>
     <el-button plain size="default" :type="btnType" @click="prePost">
-      发布
+      {{ $t('translate.发布') }}
     </el-button>
 
     <PostInfoDialog
