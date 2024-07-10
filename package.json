@@ -32,7 +32,8 @@
     "pinia": "^2.1.6",
     "qiniu-js": "^3.4.1",
     "uuid": "^8.3.2",
-    "vue": "^2.7.14"
+    "vue": "^2.7.14",
+    "vue-i18n": "^8.28.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.19",

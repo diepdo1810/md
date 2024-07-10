@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    title="关于"
+    :title="$t('translate.关于')"
     class="about__dialog"
     :visible="visible"
     @close="$emit('close')"
@@ -8,27 +8,28 @@
     center
   >
     <div style="text-align: center">
-      <h3>一款高度简洁的微信 Markdown 编辑器</h3>
-      <p>扫码关注公众号 Doocs，原创技术文章第一时间推送！</p>
+      <h3>Markdown editor</h3>
+      <p>Pefect Day</p>
       <img
-        src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/gh/doocs/md/images/1648303220922-7e14aefa-816e-44c1-8604-ade709ca1c69.png"
+        src="https://cdn.qrcode-ai.com/qrcode/cb2ed0306a7b4e392969f9390110de55-1720584412193.png"
         style="width: 40%"
+        alt="QR code"
       />
     </div>
     <template slot="footer">
       <el-button
         type="primary"
-        @click="onRedirect('https://github.com/doocs/md')"
+        @click="onRedirect('https://github.com/diepdo1810')"
         plain
       >
-        GitHub 仓库
+        GitHub
       </el-button>
       <el-button
         type="primary"
-        @click="onRedirect('https://gitee.com/doocs/md')"
+        @click="onRedirect('https://chiaser.vercel.app/')"
         plain
       >
-        Gitee 仓库
+        Blog
       </el-button>
     </template>
   </el-dialog>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import { createPinia, PiniaVuePlugin } from 'pinia'
+import VueI18n from 'vue-i18n'
 
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -19,9 +20,20 @@ import 'codemirror/addon/selection/active-line'
 import 'codemirror/addon/hint/show-hint'
 import 'codemirror/addon/hint/css-hint'
 
+import en from './locale/lang/en'
+import vi from './locale/lang/vi'
+
 import './plugins/element'
 import App from './App'
 
+Vue.use(VueI18n)
+const i18n = new VueI18n({
+  locale: "en",
+  messages: {
+      en,
+      vi,
+  },
+});
 Vue.use(ElementUI).use(PiniaVuePlugin)
 
 Vue.config.productionTip = false
@@ -29,6 +41,7 @@ Vue.config.productionTip = false
 App.mpType = `app`
 
 new Vue({
+  i18n,
   ...App,
   pinia: createPinia(),
 }).$mount(`#app`)

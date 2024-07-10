@@ -6,7 +6,7 @@
         loading_night: nightMode,
       }"
     >
-      <strong>致力于让 Markdown 编辑更简单</strong>
+      <strong>Markdown Chiaser</strong>
     </div>
   </transition>
 </template>

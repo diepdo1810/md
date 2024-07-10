@@ -3,46 +3,46 @@
     <div class="dropdowns">
       <el-dropdown>
         <span class="el-dropdown-link">
-          文件<i class="el-icon-arrow-down el-icon--right"></i>
+          {{ $t('translate.文件') }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native="refClick">
             <i class="el-icon-upload2"></i>
-            导入 .md
+            {{ $t('translate.导入') }} .md
             <input hidden type="file" ref="fileInput" accept=".md" />
           </el-dropdown-item>
           <el-dropdown-item @click.native="$emit('download')">
             <i class="el-icon-download"></i>
-            导出 .md
+            {{ $t('translate.导出') }} .md
           </el-dropdown-item>
           <el-dropdown-item @click.native="$emit('export')">
             <i class="el-icon-document"></i>
-            导出 .html
+            {{ $t('translate.导出') }} .html
           </el-dropdown-item>
           <el-dropdown-item divided @click.native="themeChanged">
             <i
               class="el-icon-check"
               :style="{ opacity: nightMode ? 1 : 0 }"
             ></i>
-            暗黑模式
+            {{ $t('translate.暗黑模式') }}
           </el-dropdown-item>
           <el-dropdown-item divided @click.native="isEditOnLeftChanged">
             <i
               class="el-icon-check"
               :style="{ opacity: isEditOnLeft ? 1 : 0 }"
             ></i>
-            左侧编辑
+            {{ $t('translate.左侧编辑') }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-dropdown>
         <span class="el-dropdown-link">
-          格式<i class="el-icon-arrow-down el-icon--right"></i>
+          {{ $t('translate.格式') }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item
             class="format-item"
-            v-for="{ label, kbd, emitArgs } in formatItems"
+            v-for="{ label, kbd, emitArgs } in translateFormatItems()"
             :key="kbd"
             @click.native="$emit(...emitArgs)"
           >
@@ -54,33 +54,33 @@
               class="el-icon-check"
               :style="{ opacity: citeStatus ? 1 : 0 }"
             ></i>
-            微信外链转底部引用
+            {{ $t('translate.微信外链转底部引用') }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-dropdown>
         <span class="el-dropdown-link">
-          编辑<i class="el-icon-arrow-down el-icon--right"></i>
+          {{ $t('translate.编辑') }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native="$emit('show-dialog-upload-img')">
             <i class="el-icon-upload"></i>
-            上传图片
+            {{ $t('translate.上传图片') }}
           </el-dropdown-item>
           <el-dropdown-item @click.native="$emit('show-dialog-form')">
             <i class="el-icon-s-grid"></i>
-            插入表格
+            {{ $t('translate.插入表格') }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-dropdown>
         <span class="el-dropdown-link">
-          样式<i class="el-icon-arrow-down el-icon--right"></i>
+          {{ $t('translate.样式') }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item class="padding-left-3">
             <style-option-menu
-              label="字体"
+              :label="$t('translate.字体')"
               :options="config.builtinFonts"
               :current="selectFont"
               :charge="fontChanged"
@@ -88,7 +88,7 @@
           </el-dropdown-item>
           <el-dropdown-item class="padding-left-3">
             <style-option-menu
-              label="字号"
+              :label="$t('translate.字号')"
               :options="config.sizeOption"
               :current="selectSize"
               :charge="sizeChanged"
@@ -96,7 +96,7 @@
           </el-dropdown-item>
           <el-dropdown-item class="padding-left-3">
             <style-option-menu
-              label="颜色"
+              :label="$t('translate.颜色')"
               :options="config.colorOption"
               :current="selectColor"
               :charge="colorChanged"
@@ -104,7 +104,7 @@
           </el-dropdown-item>
           <el-dropdown-item class="padding-left-3">
             <style-option-menu
-              label="代码主题"
+              :label="$t('translate.代码主题')"
               :options="config.codeThemeOption"
               :current="selectCodeTheme"
               :charge="codeThemeChanged"
@@ -112,7 +112,7 @@
           </el-dropdown-item>
           <el-dropdown-item class="padding-left-3">
             <style-option-menu
-              label="图注格式"
+              :label="$t('translate.图注格式')"
               :options="config.legendOption"
               :current="selectLegend"
               :charge="legendChanged"
@@ -123,7 +123,7 @@
             class="padding-left-3"
             @click.native="showPicker()"
           >
-            自定义颜色
+          {{ $t('translate.自定义颜色') }}
             <el-color-picker
               show-alpha
               ref="colorPicker"
@@ -134,40 +134,40 @@
             ></el-color-picker>
           </el-dropdown-item>
           <el-dropdown-item class="padding-left-3" @click.native="customStyle">
-            自定义 CSS
+            {{ $t('translate.自定义CSS') }}
           </el-dropdown-item>
           <el-dropdown-item divided @click.native="codeBlockChanged">
             <i
               class="el-icon-check"
               :style="{ opacity: isMacCodeBlock ? 1 : 0 }"
             ></i>
-            Mac 代码块
+            {{ $t('translate.Mac代码块') }}
           </el-dropdown-item>
           <el-dropdown-item
             divided
             class="padding-left-3"
             @click.native="showResetConfirm = true"
           >
-            重置
+          {{ $t('translate.重置') }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-dropdown>
         <span class="el-dropdown-link">
-          帮助<i class="el-icon-arrow-down el-icon--right"></i>
+          {{ $t('translate.帮助') }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native="$emit('show-about-dialog')">
-            关于
+            {{ $t('translate.关于') }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
     <el-button plain size="medium" :type="btnType" @click="copy">
-      复制
+      {{ $t('translate.复制') }}
     </el-button>
     <el-button plain size="medium" :type="btnType" @click="prePost">
-      发布
+      {{ $t('translate.发布') }}
     </el-button>
 
     <post-info-dialog
@@ -410,7 +410,7 @@ export default {
         // 输出提示
         this.$notify({
           showClose: true,
-          message: `已复制渲染后的文章到剪贴板，可直接到公众号后台粘贴`,
+          message: `${this.$t(`translate.已复制渲染后的文章到剪贴板可直接到公众号后台粘贴`)}！`,
           offset: 80,
           duration: 1600,
           type: `success`,
@@ -460,6 +460,14 @@ export default {
     cancelReset() {
       this.showResetConfirm = false
       this.editor.focus()
+    },
+    translateFormatItems() {
+      return this.formatItems.map((item) => {
+        return {
+          ...item,
+          label: this.$t(`translate.${item.label}`),
+        }
+      })
     },
     ...mapActions(useStore, [
       `setCurrentColor`,
