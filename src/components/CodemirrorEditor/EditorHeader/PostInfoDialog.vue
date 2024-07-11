@@ -37,7 +37,9 @@
 
     <template slot="footer" class="dialog-footer">
       <el-button @click="$emit('close')">{{ $t('translate.取消') }}</el-button>
-      <el-button type="primary" @click="$emit('post')">{{ $t('translate.确定') }}</el-button>
+      <el-button type="primary" @click="$emit('post')">
+        {{ $t('translate.确定') }}
+      </el-button>
     </template>
   </el-dialog>
 </template>
@@ -52,5 +54,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

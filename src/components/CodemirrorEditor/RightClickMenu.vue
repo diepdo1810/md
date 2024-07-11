@@ -12,7 +12,7 @@
         :key="key"
         @mousedown="onMouseDown(key)"
       >
-        {{ text }}
+        {{ $t('translate.' + text) }}
       </li>
     </ul>
   </div>
@@ -53,19 +53,19 @@ export default {
         ],
         [
           {
-            text: `导入 .md 文档`,
+            text: `importMarkdown`,
             key: `importMarkdown`,
           },
           {
-            text: `导出 .md 文档`,
+            text: `download`,
             key: `download`,
           },
           {
-            text: `导出 .html`,
+            text: `export`,
             key: `export`,
           },
           {
-            text: `格式化`,
+            text: `formatMarkdown`,
             key: `formatMarkdown`,
           },
         ],

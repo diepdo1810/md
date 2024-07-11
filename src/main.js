@@ -28,12 +28,12 @@ import App from './App'
 
 Vue.use(VueI18n)
 const i18n = new VueI18n({
-  locale: "en",
+  locale: `en`,
   messages: {
-      en,
-      vi,
+    en,
+    vi,
   },
-});
+})
 Vue.use(ElementUI).use(PiniaVuePlugin)
 
 Vue.config.productionTip = false
